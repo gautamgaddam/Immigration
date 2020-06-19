@@ -296,12 +296,11 @@ class Bcpnpcalculator extends Component {
 
   render() {
     let { parameters, total, isDisabled } = this.state;
-    // console.log(total);
-    // console.log(questionsAdd);
+ 
     return (
       <div>
         <h4 style={{position: "fixed"}}>Your Score: <span className="text-info">{total}</span></h4>
-      {isDisabled? <div className="text-danger">*Questions related with Bristish colombia will be disabled as you selected no</div>: null}
+         {isDisabled? <div className="text-danger">*Questions related with Bristish colombia will be disabled as you selected no</div>: null}
         {parameters.map((ele, key) => {
           return (
             <div key={key}>

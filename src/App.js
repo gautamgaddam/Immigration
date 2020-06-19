@@ -1,7 +1,8 @@
 import React from 'react';
 import {Layout} from 'antd';
 import './App.css';
-import Bcpnpcalculator  from './components/bcpnpCal';
+// import Bcpnpcalculator  from './components/bcpnpCal';
+import CrsCalculator  from './components/csrCal';
 const { Header, Content } = Layout;
 function App() {
   return (
@@ -11,10 +12,11 @@ function App() {
       </h1>
 
       <Content>
-        <Bcpnpcalculator />
-       
+        {/*  <Bcpnpcalculator />*/}
+       <CrsCalculator />
       
       </Content>
+      
     </div>
   );
 }
