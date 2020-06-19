@@ -8,6 +8,7 @@ class Bcpnpcalculator extends Component {
     this.state = {
       total: 0,
       questionsAdd: [],
+      isDisabled: false,
       parameters: [
         {
           type: "Skill Level And B.C Job Offer",
@@ -243,16 +244,43 @@ class Bcpnpcalculator extends Component {
 
   handleCalculator = (e, question) => {
     let value = e.target.value;
-    // console.log(question);
+    console.log(question);
+    if(value.toLowerCase()==="no"){
 
+      this.setState({
+        isDisabled: true,
+
+      })
+      for(let i=2; i<=5; i++){
+        document.getElementById(i+"_question").value="Please Select";
+      }
+     
+
+    }else if(value.toLowerCase()==="yes"){
+      this.setState({
+        isDisabled: false
+      })
+    }
     let { questionsAdd } = this.state;
     let obj = {
       question: question.question,
-      value: parseInt(value),
+      value: (value.toLowerCase()==="no" || value.toLowerCase()==="yes")?0: parseInt(value),
       id: question.id,
     };
+    let getFiltered = null;
     if (questionsAdd.length > 0) {
-      let getFiltered = questionsAdd.filter((ele) => ele.id !== question.id);
+     
+      if(value.toLowerCase()==="no"){
+        console.log(questionsAdd);
+        getFiltered = questionsAdd.filter((ele) => 
+         ele.id !== 2 && ele.id !==3 && ele.id !==4 && ele.id !==5 && ele.id !== question.id
+        );
+        console.log(getFiltered);
+      }else{
+        getFiltered = questionsAdd.filter((ele) => ele.id !== question.id);
+      }
+
+    
       let allQuest = [...getFiltered, obj];
       this.setState({
         questionsAdd: allQuest,
@@ -267,32 +295,37 @@ class Bcpnpcalculator extends Component {
   };
 
   render() {
-    let { parameters, total, questionsAdd } = this.state;
+    let { parameters, total, isDisabled } = this.state;
     // console.log(total);
-    console.log(questionsAdd);
+    // console.log(questionsAdd);
     return (
       <div>
-        <div>Total: {total}</div>
-
+        <h4 style={{position: "fixed"}}>Your Score: <span className="text-info">{total}</span></h4>
+      {isDisabled? <div className="text-danger">*Questions related with Bristish colombia will be disabled as you selected no</div>: null}
         {parameters.map((ele, key) => {
           return (
             <div key={key}>
-              <h4>{ele.type}</h4>
+              <h5 >{ele.type}</h5>
               {ele.quesAndAns.map((q, key1) => {
+               
+       
                 return (
-                  <div key={key1} style={{ display: "flex" }}>
-                    <div> {q.question} </div>
-                    <select onChange={(e) => this.handleCalculator(e, q)}>
+                  <section>
+                  <div key={key1}  className="col-md-12 d-flex mb-3">
+                    <div className="col-md-8 text-right"> {q.question} </div>
+                    <select className="col-md-4" id={q.id+"_question"}  onChange={(e) => this.handleCalculator(e, q)}  disabled={ (isDisabled && (q.id=== 4|| q.id=== 5 || q.id===2 || q.id===3))? isDisabled: false} >
                       <option default>Please Select</option>
                       {q.answer.map((a, key2) => {
+                   
                         return (
-                          <option key={key2} value={a.points}>
+                          <option key={key2} value={(q.id !== 1)? a.points: a.answerOption}>
                             {a.answerOption}
                           </option>
                         );
                       })}
                     </select>
                   </div>
+                  </section>
                 );
               })}
             </div>
