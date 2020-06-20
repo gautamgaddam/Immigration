@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-class {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px;
+
+}
+.custom-class div {
+ width: 80%
+  
+}
+.custom-class select {
+  width: 30%
+   
+ }
