@@ -18,17 +18,24 @@ class CrsCalculator extends Component {
       showFourteen: false,
       showFifteen: false,
       showSixteen: false,
+      showSeventeen:false,
+      showEighteen: false,
       firstOffLang: [],
       secOffLang: [],
-      martialStatus: [
-        { name: "Annulled Marraige", type: 1 },
-        { name: "Common-Law", type: 0 },
-        { name: "Divorced / Separated", type: 1 },
-        { name: "Legally Separated", type: 1 },
-        { name: "Married", type: 0 },
-        { name: "Never Married / Single", type: 1 },
-        { name: "Widowed", type: 1 },
-      ],
+
+      first:{
+        question: "What is your marital status?",
+        martialStatus: [
+          { name: "Annulled Marraige", type: 1 },
+          { name: "Common-Law", type: 0 },
+          { name: "Divorced / Separated", type: 1 },
+          { name: "Legally Separated", type: 1 },
+          { name: "Married", type: 0 },
+          { name: "Never Married / Single", type: 1 },
+          { name: "Widowed", type: 1 },
+        ],
+      },
+     
       isSpermRes: [
         { name: "Yes", type: 1 },
         { name: "No", type: 0 },
@@ -37,81 +44,92 @@ class CrsCalculator extends Component {
         { name: "Yes", type: 1 },
         { name: "No", type: 0 },
       ],
-      thirdOptions: [
-        { name: "17 years of age or less", withSpouse: 0, withoutSpouse: 0 },
-        { name: "18 years of age", withSpouse: 90, withoutSpouse: 99 },
-        { name: "19 years of age", withSpouse: 95, withoutSpouse: 105 },
-        { name: "20 to 29 years of age", withSpouse: 100, withoutSpouse: 110 },
-        { name: "30 years of age", withSpouse: 95, withoutSpouse: 105 },
-        { name: "31 years of age", withSpouse: 90, withoutSpouse: 99 },
-        { name: "32 years of age", withSpouse: 85, withoutSpouse: 94 },
-        { name: "33 years of age", withSpouse: 80, withoutSpouse: 88 },
-        { name: "34 years of age", withSpouse: 75, withoutSpouse: 83 },
-        { name: "35 years of age", withSpouse: 70, withoutSpouse: 77 },
-        { name: "36 years of age", withSpouse: 65, withoutSpouse: 72 },
-        { name: "37 years of age", withSpouse: 60, withoutSpouse: 66 },
-        { name: "38 years of age", withSpouse: 55, withoutSpouse: 61 },
-        { name: "39 years of age", withSpouse: 50, withoutSpouse: 55 },
-        { name: "40 years of age", withSpouse: 45, withoutSpouse: 50 },
-        { name: "41 years of age", withSpouse: 35, withoutSpouse: 39 },
-        { name: "42 years of age", withSpouse: 25, withoutSpouse: 28 },
-        { name: "43 years of age", withSpouse: 15, withoutSpouse: 17 },
-        { name: "44 years of age", withSpouse: 5, withoutSpouse: 6 },
-        { name: "45 years of age or more", withSpouse: 0, withoutSpouse: 0 },
-      ],
-      fourOptions: [
-        {
-          name: "Less than secondary school (high school)",
-          withSpouse: 0,
-          withoutSpouse: 0,
-        },
-        {
-          name: "Secondary diploma (high school graduation",
-          withSpouse: 28,
-          withoutSpoue: 30,
-        },
-        {
-          name:
-            "One-year degree, diploma or certificate from a university, college, trade or technical school, or other institute:",
-          withSpouse: 84,
-          withoutSpouse: 90,
-        },
-        {
-          name:
-            "Two-year program at a university, college, trade or technical school, or other institute",
-          withSpouse: 91,
-          withoutSpouse: 98,
-        },
-        {
-          name:
-            "Bachelor’s degree OR a three or more year program at a university, college, trade or technical school, or other institute",
-          withSpouse: 112,
-          withoutSpouse: 120,
-        },
-        {
-          name:
-            "Two or more certificates, diplomas, or degrees. One must be for a program of three or more years",
-          withSpouse: 119,
-          withoutSpouse: 128,
-        },
-        {
-          name:
-            "Master’s degree, OR professional degree needed to practice in a licensed profession (For “professional degree,” the degree program must have been in: medicine, veterinary medicine, dentistry, optometry, law, chiropractic medicine, or pharmacy.)",
-          withSpouse: 126,
-          withoutSpouse: 135,
-        },
-        {
-          name: "Doctoral level university degree (Ph.D.)",
-          withSpouse: 140,
-          withoutSpouse: 150,
-        },
-      ],
-
-      fiveOptions: [
-        { name: "Yes", type: 1 },
-        { name: "No", type: 0 },
-      ],
-      sixOptions: [
+      third:{
+        question:"How old are you?",
+        thirdOptions: 
+        [
+          { name: "17 years of age or less", withSpouse: 0, withoutSpouse: 0 },
+          { name: "18 years of age", withSpouse: 90, withoutSpouse: 99 },
+          { name: "19 years of age", withSpouse: 95, withoutSpouse: 105 },
+          { name: "20 to 29 years of age", withSpouse: 100, withoutSpouse: 110 },
+          { name: "30 years of age", withSpouse: 95, withoutSpouse: 105 },
+          { name: "31 years of age", withSpouse: 90, withoutSpouse: 99 },
+          { name: "32 years of age", withSpouse: 85, withoutSpouse: 94 },
+          { name: "33 years of age", withSpouse: 80, withoutSpouse: 88 },
+          { name: "34 years of age", withSpouse: 75, withoutSpouse: 83 },
+          { name: "35 years of age", withSpouse: 70, withoutSpouse: 77 },
+          { name: "36 years of age", withSpouse: 65, withoutSpouse: 72 },
+          { name: "37 years of age", withSpouse: 60, withoutSpouse: 66 },
+          { name: "38 years of age", withSpouse: 55, withoutSpouse: 61 },
+          { name: "39 years of age", withSpouse: 50, withoutSpouse: 55 },
+          { name: "40 years of age", withSpouse: 45, withoutSpouse: 50 },
+          { name: "41 years of age", withSpouse: 35, withoutSpouse: 39 },
+          { name: "42 years of age", withSpouse: 25, withoutSpouse: 28 },
+          { name: "43 years of age", withSpouse: 15, withoutSpouse: 17 },
+          { name: "44 years of age", withSpouse: 5, withoutSpouse: 6 },
+          { name: "45 years of age or more", withSpouse: 0, withoutSpouse: 0 },
+        ]
+       },
+      four:{
+        question:"What is your level of education?",
+        fourOptions: [
+          {
+            name: "Less than secondary school (high school)",
+            withSpouse: 0,
+            withoutSpouse: 0,
+          },
+          {
+            name: "Secondary diploma (high school graduation",
+            withSpouse: 28,
+            withoutSpoue: 30,
+          },
+          {
+            name:
+              "One-year degree, diploma or certificate from a university, college, trade or technical school, or other institute:",
+            withSpouse: 84,
+            withoutSpouse: 90,
+          },
+          {
+            name:
+              "Two-year program at a university, college, trade or technical school, or other institute",
+            withSpouse: 91,
+            withoutSpouse: 98,
+          },
+          {
+            name:
+              "Bachelor’s degree OR a three or more year program at a university, college, trade or technical school, or other institute",
+            withSpouse: 112,
+            withoutSpouse: 120,
+          },
+          {
+            name:
+              "Two or more certificates, diplomas, or degrees. One must be for a program of three or more years",
+            withSpouse: 119,
+            withoutSpouse: 128,
+          },
+          {
+            name:
+              "Master’s degree, OR professional degree needed to practice in a licensed profession (For “professional degree,” the degree program must have been in: medicine, veterinary medicine, dentistry, optometry, law, chiropractic medicine, or pharmacy.)",
+            withSpouse: 126,
+            withoutSpouse: 135,
+          },
+          {
+            name: "Doctoral level university degree (Ph.D.)",
+            withSpouse: 140,
+            withoutSpouse: 150,
+          },
+        ]
+      },
+      five:{
+        question:" Have you earned a Canadian degree, diploma or certificate?",
+        fiveOptions: [
+          { name: "Yes", type: 1 },
+          { name: "No", type: 0 },
+        ]
+      },
+      six:{
+        question:"Choose the best answer to describe this level of education?",
+        sixOptions: [
         {
           name: "Secondary (high school) or less",
           withSpouse: 0,
@@ -128,12 +146,18 @@ class CrsCalculator extends Component {
           withSpouse: 30,
           withoutSpouse: 30,
         },
-      ],
-      sevenOptions: [
-        { name: "Yes", type: 1 },
-        { name: "No", type: 0 },
-      ],
-      eightOptions: [
+       ]
+      },
+      seven:{
+        question:"Are your test results less than two years old?",
+        sevenOptions: [
+          { name: "Yes", type: 1 },
+          { name: "No", type: 0 },
+        ] 
+       },
+      eight:{
+        question:"Which language test did you take for your first official language?",
+       eightOptions: [
         {
           name: "CELPIP-G",
           type: "A",
@@ -141,59 +165,56 @@ class CrsCalculator extends Component {
             {
               type: "speaking",
               values: [
-                { val: "10-12", withspouse: 32, withOutSpouse: 34 },
-                { val: "9", withspouse: 29, withOutSpouse: 31 },
-                { val: "8", withspouse: 22, withOutSpouse: 23 },
-                { val: "7", withspouse: 16, withOutSpouse: 17 },
-                { val: "6", withspouse: 8, withOutSpouse: 9 },
-                { val: "5", withspouse: 6, withOutSpouse: 6 },
-                { val: "4", withspouse: 6, withOutSpouse: 6 },
-                { val: "M, 0-3", withspouse: 0, withOutSpouse: 0 },
+                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
+                { val: "9", withspouse: 29, withoutSpouse: 31 },
+                { val: "8", withspouse: 22, withoutSpouse: 23 },
+                { val: "7", withspouse: 16, withoutSpouse: 17 },
+                { val: "6", withspouse: 8, withoutSpouse: 9 },
+                { val: "5", withspouse: 6, withoutSpouse: 6 },
+                { val: "4", withspouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Listening",
               values: [
-                { val: "10-12", withspouse: 32, withOutSpouse: 34 },
-                { val: "9", withspouse: 29, withOutSpouse: 31 },
-                { val: "8", withspouse: 22, withOutSpouse: 23 },
-                { val: "7", withspouse: 16, withOutSpouse: 17 },
-                { val: "6", withspouse: 8, withOutSpouse: 9 },
+                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
+                { val: "9", withspouse: 29, withoutSpouse: 31 },
+                { val: "8", withspouse: 22, withoutSpouse: 23 },
+                { val: "7", withspouse: 16, withoutSpouse: 17 },
+                { val: "6", withspouse: 8, withoutSpouse: 9 },
 
-                { val: "5", withspouse: 6, withOutSpouse: 6 },
+                { val: "5", withspouse: 6, withoutSpouse: 6 },
 
-                { val: "4", withspouse: 6, withOutSpouse: 6 },
+                { val: "4", withspouse: 6, withoutSpouse: 6 },
 
-                { val: "M, 0-3", withspouse: 0, withOutSpouse: 0 },
+                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Reading",
               values: [
-                { val: "10-12", withspouse: 32, withOutSpouse: 34 },
-                { val: "9", withspouse: 29, withOutSpouse: 31 },
-                { val: "8", withspouse: 22, withOutSpouse: 23 },
-                { val: "7", withspouse: 16, withOutSpouse: 17 },
-                { val: "6", withspouse: 8, withOutSpouse: 9 },
-                { val: "5", withspouse: 6, withOutSpouse: 6 },
-                { val: "4", withspouse: 6, withOutSpouse: 6 },
-                { val: "M, 0-3", withspouse: 0, withOutSpouse: 0 },
+                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
+                { val: "9", withspouse: 29, withoutSpouse: 31 },
+                { val: "8", withspouse: 22, withoutSpouse: 23 },
+                { val: "7", withspouse: 16, withoutSpouse: 17 },
+                { val: "6", withspouse: 8, withoutSpouse: 9 },
+                { val: "5", withspouse: 6, withoutSpouse: 6 },
+                { val: "4", withspouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Writing",
               values: [
-                { val: "10-12", withspouse: 32, withOutSpouse: 34 },
-                { val: "9", withspouse: 29, withOutSpouse: 31 },
-                { val: "8", withspouse: 22, withOutSpouse: 23 },
-                { val: "7", withspouse: 16, withOutSpouse: 17 },
-                { val: "6", withspouse: 8, withOutSpouse: 9 },
-
-                { val: "5", withspouse: 6, withOutSpouse: 6 },
-
-                { val: "4", withspouse: 6, withOutSpouse: 6 },
-
-                { val: "M, 0-3", withspouse: 0, withOutSpouse: 0 },
+                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
+                { val: "9", withspouse: 29, withoutSpouse: 31 },
+                { val: "8", withspouse: 22, withoutSpouse: 23 },
+                { val: "7", withspouse: 16, withoutSpouse: 17 },
+                { val: "6", withspouse: 8, withoutSpouse: 9 },
+                { val: "5", withspouse: 6, withoutSpouse: 6 },
+                { val: "4", withspouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
               ],
             },
           ],
@@ -373,18 +394,22 @@ class CrsCalculator extends Component {
             },
           ],
         },
-      ],
+       ]
+      },
       nineOptions: [],
       tenOptions: [],
       elevenOptions: [],
-      twelveOptions: [
+      twelve:{
+        question: "Work Experience In the last ten years, how many years of skilled work experience in Canada do you have?",
+        twelveOptions: [
         { name: "None or less than a year", withSpouse: 0, withoutSpouse: 0 },
         { name: "1 year", withSpouse:  35, withoutSpouse: 40 },
         { name: "2 years", withSpouse: 46, withoutSpouse: 53 },
         { name: "3 years", withSpouse: 56, withoutSpouse: 64 },
         { name: "4 years", withSpouse: 63, withoutSpouse: 72 },
         { name: "5 years or mores", withSpouse: 70, withoutSpouse: 80 },
-      ],
+      ]},
+      thirteen:{ question:  "In the last 10 years, how many total years of foreign skilled work experience do you have?",
       thirteenOptions: [
         { name: "No foreign work experience", oneYear: 0, twoYear: 0 },
         {
@@ -397,39 +422,55 @@ class CrsCalculator extends Component {
           oneYear: 25,
           twoYear: 50,
         },
-      ],
-      fourteenOptions: [
-        { name: "Yes", type: 1 , plusFive: 25, plusSeven:30},
-        { name: "No", type: 0, plusFive: 0, plusSeven:0 },
-      ],
-      fifteenOptions: [
-        { name: "Yes", type: 1 },
-        { name: "No", type: 0 },
-      ],
+      ]},
+      fourteen:{
+        question:"Do you have a certificate of qualification from a Canadian province, territory or federal body?",
+        fourteenOptions: [
+          { name: "Yes", type: 1 , plusFive: 25, plusSeven:30},
+          { name: "No", type: 0, plusFive: 0, plusSeven:0 },
+        ]},
+        fifteen:{
+          question:"Do you have a valid job offer supported by a Labour Market Impact Assessment (if needed)?",
+        fifteenOptions: [
+          { name: "Yes", type: 1 },
+          { name: "No", type: 0 },
+        ]
+      },
+      fifteenA:{
+        question:"Which NOC skill type or level is the job offer?",
+       fifteenAOptions:[
+        {name:"NOC 00", value: 200},
+        {name:"Any other NOC 0, A or B or c or D", value: 50}
+      ]
+    },
+    sixteen:{
+      question:"Do you have a nomination certificate from a province or territory?",
       sixteenOptions: [
-        { name: "Yes", type: 1 },
-        { name: "No", type: 0 },
-      ],
-      seventeenOptions: [
-        { name: "Yes", type: 1 },
-        { name: "No", type: 0 },
-      ],
+        { name: "Yes", type: 1, value:600 },
+        { name: "No", type: 0, value: 0 },
+      ]
+    },
+    seventeen:{
+      question:"Do you or your spouse or common law partner (if they will come with you to Canada) have at least one brother or sister living  in Canada who is a citizen or permanent resident?",
+     seventeenOptions: [
+        { name: "Yes", type: 1 , value:15},
+        { name: "No", type: 0, value:0 },
+      ]},
       totalScore: [],
-      typeWithSpoWithoutSpou: null,
+      typeWithSpowithoutSpou: null,
     };
   }
 
   handleChange = (e) => {
     let value = e.target.value;
-
     if (value === "0") {
-      this.setState({ showQues2: true, typeWithSpoWithoutSpou: value });
+      this.setState({ showQues2: true, typeWithSpowithoutSpou: value });
     } else if (value === "1") {
       this.setState({
         showQues2: false,
         showSperm: false,
         showThree: true,
-        typeWithSpoWithoutSpou: value,
+        typeWithSpowithoutSpou: value,
       });
     } else {
       this.setState({ showQues2: false, showSperm: false, showThree: false });
@@ -444,15 +485,18 @@ class CrsCalculator extends Component {
       this.setState({ showSperm: false, showThree: true });
     }
   };
-  changeThird = (e) => {
+  changeThird = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
       this.setState({ showFour: false });
     } else {
       let obj = {
-        question: "thirdOptions",
+        question: q,
         answer: value,
+        key:"third",
+        innerKey:"thirdOptions",
+        withwithout: true
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -468,15 +512,18 @@ class CrsCalculator extends Component {
       }
     }
   };
-  handleFourChange = (e) => {
+  handleFourChange = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
       this.setState({ showFive: false });
     } else {
       let obj = {
-        question: "fourOptions",
+        question: q,
         answer: value,
+        key:"four",
+        innerKey:"fourOptions",
+        withwithout: true,
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -500,15 +547,18 @@ class CrsCalculator extends Component {
       this.setState({ showSeven: true, showSix: false });
     }
   };
-  handleSixChange = (e) => {
+  handleSixChange = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
       this.setState({ showSeven: false });
     } else {
       let obj = {
-        question: "sixOptions",
+        question: q,
         answer: value,
+        key:"six",
+        innerKey:"sixOptions",
+        withwithout: true
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -532,15 +582,24 @@ class CrsCalculator extends Component {
       this.setState({ showEight: false });
     }
   };
-  handleEightChange = (e) => {
-    let { eightOptions } = this.state;
-
+  handleEightChange = (e, q) => {
+    let { eight, totalScore } = this.state;
+    let {eightOptions}= eight;
     if (e.target.value !== undefined) {
       let value = e.target.value;
-
+      let obj = {
+        question: q,
+        answer: value,
+        key:"eight",
+        innerKey:"eightOptions",
+        withwithout: true,
+        getInner: "firstOffLang"
+      };
+      let isFound = totalScore.filter((ele) => ele.question !== obj.question);
+    
       this.setState({
         showNine: true,
-
+        totalScore: [...isFound, obj],
         nineOptions: eightOptions.filter((data) => data.type === value),
         tenOptions: eightOptions.filter((data) => {
           if (value === "A" || value === "B") {
@@ -594,7 +653,7 @@ class CrsCalculator extends Component {
         firstOffLang: [...remain, obj],
         totalScore: [
           ...newtotalScore,
-          { question: questionName, answer: obj.answer, type:"firstOffLang" },
+          { question: questionName, answer: obj.answer, type:"firstOffLang"  },
         ],
       });
     } else {
@@ -609,13 +668,25 @@ class CrsCalculator extends Component {
   };
 
   handleTenChange = (e) => {
-    let { eightOptions } = this.state;
+    let { eight, totalScore } = this.state;
+    let {eightOptions}= eight;
     let value = e.target.value;
+    let obj = {
+      question: "Do you have other language results?",
+      answer: value,
+      withwithout: true,
+      key: "eight",
+      innerKey: "eightOptions",
+      getInner:"secOffLang"
+      
+    };
+    let isFound = totalScore.filter((ele) => ele.question !== obj.question);
     if (value === "A" || value === "B" || value === "C" || value === "D") {
       this.setState({
         showEleven: true,
         showTwelve: false,
         elevenOptions: eightOptions.filter((data) => data.type === value),
+        totalScore: [...isFound, obj]
       });
     } else {
       this.setState({
@@ -642,7 +713,7 @@ class CrsCalculator extends Component {
     let obj = {
       key: key,
       value: e.target.value,
-      answer: e.target.value
+      answer: e.target.value,
     };
     let remain = [];
 
@@ -675,15 +746,18 @@ class CrsCalculator extends Component {
     }
   };
 
-  handleTwelveChange = (e) => {
+  handleTwelveChange = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
       this.setState({ showThirteen: false });
     } else {
       let obj = {
-        question: "twelveOptions",
+        question: q,
         answer: value,
+        key:"twelve",
+        innerKey:"twelveOptions",
+        withwithout: true
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -699,15 +773,18 @@ class CrsCalculator extends Component {
       }
     }
   };
-  handleThirteenChange = (e) => {
+  handleThirteenChange = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
       this.setState({ showFourteen: false });
     } else {
       let obj = {
-        question: "thirteenOptions",
+        question: q,
         answer: value,
+        key:"thirteen",
+        innerKey:"thirteenOptions",
+        withwithout: false
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -723,68 +800,254 @@ class CrsCalculator extends Component {
       }
     }
   };
-  handleFourteenChange = (e) => {
+  handleFourteenChange = (e, q) => {
     let value = e.target.value;
     let { totalScore } = this.state;
     if (value === "none") {
-      this.setState({ showFifteen: false });
+      this.setState({ showFifteen: false ,    showEighteen: false });
+      // document.getElementById("calButton").setAttribute("disabled", true);
     } else {
       let obj = {
-        question: "fourteenOptions",
+        question: q,
         answer: value,
+        key:"fourteen",
+        innerKey:"fourteenOptions",
+        withwithout: false
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
         this.setState({
           totalScore: [...isFound, obj],
           showFifteen: true,
+          showEighteen: true 
+
         });
+        // document.getElementById("calButton").removeAttribute("disabled");
       } else {
         this.setState({
           totalScore: [...totalScore, obj],
           showFifteen: true,
+          showEighteen: true
         });
+        // document.getElementById("calButton").removeAttribute("disabled");
       }
     }
   };
-  handleFifteenChange = (e) => {
-    if (e.target.value !== "0") {
+  handleFifteenChange = (e ) => {
+    // console.log(e.target.value);
+    if (e.target.value !== "none") {
+
+      if(e.target.value==="0"){
+        this.setState({
+          showFifteenA: true,
+          showSixteen: false,
+        })
+      }else{
       this.setState({
         showSixteen: true,
       });
-    } else {
+      }
+    }
+    else {
       this.setState({
         showSixteen: false,
       });
     }
   };
-  handleSixteenChange = (e) => {
-    if (e.target.value !== "0") {
-      this.setState({
-        showSeventeen: true,
-      });
+
+  handleFifteenAChange=(e, q)=>{
+  
+    let value = e.target.value;
+    let { totalScore } = this.state;
+    if (value === "none") {
+      this.setState({ showSixteen: false });
     } else {
-      this.setState({
-        showSeventeen: false,
-      });
+      let obj = {
+        question: q,
+        answer: value,
+        key:"fifteenA",
+        innerKey:"fifteenAOptions",
+        withwithout: false
+      };
+      if (totalScore.length > 0) {
+        let isFound = totalScore.filter((ele) => ele.question !== obj.question);
+        this.setState({
+          totalScore: [...isFound, obj],
+          showSixteen: true,
+        });
+      } else {
+        this.setState({
+          totalScore: [...totalScore, obj],
+          showSixteen: true,
+        });
+      }
+    }
+  }
+  handleSixteenChange = (e, q) => {
+    let value = e.target.value;
+    let { totalScore } = this.state;
+    if (value === "none") {
+      this.setState({ showSeventeen: false });
+    } else {
+      let obj = {
+        question: q,
+        answer: value,
+        key:"sixteen",
+        innerKey:"sixteenOptions",
+        withwithout: false
+      };
+      if (totalScore.length > 0) {
+        let isFound = totalScore.filter((ele) => ele.question !== obj.question);
+        this.setState({
+          totalScore: [...isFound, obj],
+          showSeventeen: true,
+        });
+      } else {
+        this.setState({
+          totalScore: [...totalScore, obj],
+          showSeventeen: true,
+        });
+      }
     }
   };
-  handleSeventeenChnage = (e) => {};
+  handleSeventeenChnage = (e, q) => {
+
+    let value = e.target.value;
+    let { totalScore } = this.state;
+    if (value === "none") {
+      this.setState({ showEighteen: false });
+    } else {
+      let obj = {
+        question: q,
+        answer: value,
+        key:"seventeen",
+        innerKey:"seventeenOptions",
+        withwithout: false
+      };
+      if (totalScore.length > 0) {
+        let isFound = totalScore.filter((ele) => ele.question !== obj.question);
+        this.setState({
+          totalScore: [...isFound, obj],
+          // showEighteen: value !== "none" ? true: false,
+        });
+      } else {
+        this.setState({
+          totalScore: [...totalScore, obj],
+          // showEighteen: value !== "none" ? true: false,
+        });
+      }
+    }
+
+  };
+
+
+
+  calculateScore=(e)=>{
+    e.preventDefault();
+    // console.log(e);
+    // console.log(this.state.totalScore);
+    // console.log(this.state.typeWithSpowithoutSpou);
+    
+    let {totalScore, typeWithSpowithoutSpou}= this.state;
+   
+    //  )
+     let scoreSpouse=[];
+     let firstOff=[];
+     let secondOff=[];
+     let additional=[];
+     let checkThirteen= totalScore.filter(score=> score.type==="firstOffLang").map((ele)=>   
+     {  
+       if(ele.answer==="0" || ele.answer==="1" ) {
+       return {value:10};
+       }
+       else if(ele.answer==="1" || ele.answer==="2" || ele.answer==="3") {
+         return {value: 7};
+        }else{
+          return {value: null};
+        }
+      });
+      let checkFourteen= totalScore.filter(score=> score.type==="firstOffLang").map((ele)=>   
+      {  
+        if(ele.answer==="5" || ele.answer==="4" || ele.answer === "3") {
+        return {value:7};
+        }
+        else if(ele.answer==="0" || ele.answer==="1" || ele.answer==="2" || ele.answer==="3") {
+          return {value: 10};
+         }else{
+           return {value: null};
+         }
+       })
+
+      totalScore.map(score=> 
+      {
+        if(score.withwithout && score.getInner === undefined){
+            let answer=  typeWithSpowithoutSpou ==="1"?
+                 this.state[score.key][score.innerKey][parseInt(score.answer)].withoutSpouse :
+                this.state[score.key][score.innerKey][parseInt(score.answer)].withSpouse;
+               scoreSpouse.push({...score, newAnswer: answer})
+               return score
+        }else if(score.type==="firstOffLang"){
+          let answer=  typeWithSpowithoutSpou ==="1"?
+          this.state.eight.eightOptions[0].options[0].values[parseInt(score.answer)].withoutSpouse :
+          this.state.eight.eightOptions[0].options[0].values[parseInt(score.answer)].withSpouse;
+          firstOff.push({...score, newAnswer: answer})
+        return score
+        }else if(score.type==="secOffLang"){
+          let answer=  typeWithSpowithoutSpou ==="1"?
+          this.state.eight.eightOptions[1].options[0].values[parseInt(score.answer)].withoutSpouse :
+          this.state.eight.eightOptions[1].options[0].values[parseInt(score.answer)].withSpouse;
+          secondOff.push({...score, newAnswer: answer})
+        return score
+        }else if(score.key==="thirteen"){
+         let checkAnswerten= checkThirteen.map(ele=> ele.value=== 10).every(v => v === true);
+         let checkAnswerSeven= checkThirteen.map(ele=> ele.value=== 7).every(v => v === true);
+          
+         let answer=checkAnswerten ?  this.state.thirteen.thirteenOptions[parseInt(score.answer)].twoYear 
+            :  (checkAnswerSeven ? this.state.thirteen.thirteenOptions[parseInt(score.answer)].oneYear: 0 )
+          return additional.push({...score, newAnswer: answer})
+        }else if(score.key==="fourteen"){
+          let checkAnswerten= checkFourteen.map(ele=> ele.value=== 10).every(v => v === true);
+         let checkAnswerSeven= checkFourteen.map(ele=> ele.value=== 7).every(v => v === true);
+          
+         let answer=checkAnswerten ?  this.state.fourteen.fourteenOptions[parseInt(score.answer)].plusSeven 
+            :  (checkAnswerSeven ? this.state.fourteen.fourteenOptions[parseInt(score.answer)].plusFive: 0 )
+          return additional.push({...score, newAnswer: answer})
+        }else if(score.key==="fifteenA"){
+          let answer=   this.state[score.key][score.innerKey][parseInt(score.answer)].value ;
+          additional.push({...score, newAnswer: answer})
+           return score
+        }else if(score.key=== "sixteen"){
+          let answer=   this.state[score.key][score.innerKey][parseInt(score.answer)].value ;
+          additional.push({...score, newAnswer: answer})
+           return score
+        }else if(score.key=== "seventeen"){
+          let answer=   this.state[score.key][score.innerKey][parseInt(score.answer)].value ;
+          additional.push({...score, newAnswer: answer})
+           return score
+        }
+        else{
+          return score;
+        }
+    })
+    
+    let finalScore= [...scoreSpouse, ...firstOff, ...secondOff, ...additional].reduce((acc, curr) => acc + curr.newAnswer, 0);
+    this.setState({finalScore: finalScore});
+  }
   render() {
     let {
-      martialStatus,
+      first,
       showQues2,
       isSpermRes,
       showSperm,
       cumCanada,
       showThree,
-      thirdOptions,
+      third,
       showFour,
-      fourOptions,
-      fiveOptions,
-      sixOptions,
-      sevenOptions,
-      eightOptions,
+      four,
+      five,
+      six,
+      seven,
+      eight,
       nineOptions,
       showEleven,
       showTwelve,
@@ -796,29 +1059,33 @@ class CrsCalculator extends Component {
       showThirteen,
       showFourteen,
       showFifteen,
+      showFifteenA,
       showSixteen,
       showSeventeen,
+      showEighteen,
       tenOptions,
       elevenOptions,
-      twelveOptions,
+      twelve,
       firstOffLang,
       secOffLang,
-      thirteenOptions,
-      fourteenOptions,
-      fifteenOptions,
-      sixteenOptions,
-      seventeenOptions,
+      thirteen,
+      fourteen,
+      fifteen,
+      fifteenA,
+      sixteen,
+      seventeen,
+      finalScore
     } = this.state;
     let nineOp = nineOptions[0];
 
-    console.log(this.state.totalScore);
+  //  console.log(this.state.totalScore);
     return (
       <div className="container   p-3">
         <div className="d-flex custom-class">
-          <div>What is your marital status?</div>
+          <div>{first.question}</div>
           <select onChange={this.handleChange}>
             <option default>Select Status</option>
-            {martialStatus.map((ele, key) => {
+            {first.martialStatus.map((ele, key) => {
               return (
                 <option key={key} value={ele.type}>
                   {ele.name}
@@ -872,13 +1139,13 @@ class CrsCalculator extends Component {
         {showThree ? (
           <div className="d-flex custom-class">
             <div>
-              3) How old are you? Choose the best answer: If you’ve been invited
+              {third.question} Choose the best answer: If you’ve been invited
               to apply, enter your age on the date you were invited. OR If you
               plan to complete an Express Entry profile, enter your current age.
             </div>
-            <select onChange={(e) => this.changeThird(e)}>
+            <select onChange={(e) => this.changeThird(e, third.question)}>
               <option value="none">Please Select</option>
-              {thirdOptions.map((ele, key) => {
+              {third.thirdOptions.map((ele, key) => {
                 return (
                   <option key={key} value={key}>
                     {ele.name}
@@ -891,19 +1158,11 @@ class CrsCalculator extends Component {
         {showFour ? (
           <div className="d-flex custom-class">
             <div>
-              4) What is your level of education? Enter the highest level of
-              education for which you: earned a Canadian degree, diploma or
-              certificate or had an Educational Credential Assessment (ECA) if
-              you did your study outside Canada. (ECAs must be from an approved
-              agency, in the last five years) Note: a Canadian degree, diploma
-              or certificate must either have been earned at an accredited
-              Canadian university, college, trade or technical school, or other
-              institute in Canada. Distance learning counts for education
-              points, but not for bonus points in your profile or application.
+              {four.question} 
             </div>
-            <select onChange={this.handleFourChange}>
+            <select onChange={(e)=>this.handleFourChange(e, four.question)}>
               <option value="none">Please Select</option>
-              {fourOptions.map((ele, key) => {
+              {four.fourOptions.map((ele, key) => {
                 return (
                   <option key={key} value={key}>
                     {ele.name.slice(0, 50)}
@@ -916,19 +1175,12 @@ class CrsCalculator extends Component {
         {showFive ? (
           <div className="d-flex custom-class">
             <div>
-              5) Have you earned a Canadian degree, diploma or certificate?
-              Note: to answer yes: English or French as a Second Language must
-              not have made up more than half your study you must not have
-              studied under an award that required you to return to your home
-              country after graduation to apply your skills and knowledge you
-              must have studied at a school within Canada (foreign campuses
-              don’t count) you had to be enrolled full time for at least eight
-              months, and have been physically present in Canada for at least
-              eight months
+              {five.question}
+             
             </div>
             <select onChange={this.handleFiveChange}>
               <option>Please Select</option>
-              {fiveOptions.map((ele, key) => {
+              {five.fiveOptions.map((ele, key) => {
                 return (
                   <option key={key} value={ele.type}>
                     {ele.name}
@@ -942,12 +1194,12 @@ class CrsCalculator extends Component {
         {showSix ? (
           <div className="d-flex custom-class">
             <div>
-              Choose the best answer to describe this level of education.
+             {six.question}
             </div>
 
-            <select onChange={this.handleSixChange}>
+            <select onChange={(e)=>this.handleSixChange(e, six.question)}>
               <option value="none">Please Select</option>
-              {sixOptions.map((ele, key) => {
+              {six.sixOptions.map((ele, key) => {
                 return (
                   <option key={key} value={key}>
                     {ele.name.slice(0, 50)}
@@ -959,16 +1211,11 @@ class CrsCalculator extends Component {
         ) : null}
         {showSeven ? (
           <div className="d-flex custom-class">
-            <div>
-              Official languages: Canada's' official languages are English and
-              French. You need to submit language test results that are less
-              than two years old for all programs under Express Entry, even if
-              English or French is your first language.
-            </div>
-            <div>Are your test results less than two years old?</div>
+           
+            <div>{seven.question}</div>
             <select onChange={this.handleSevenChange}>
               <option>Please Select</option>
-              {sevenOptions.map((ele, key) => {
+              {seven.sevenOptions.map((ele, key) => {
                 return (
                   <option key={key} value={ele.type}>
                     {ele.name}
@@ -983,12 +1230,11 @@ class CrsCalculator extends Component {
           <div>
             <div className="d-flex custom-class">
               <div>
-                Which language test did you take for your first official
-                language?
+                {eight.question}
               </div>
-              <select onChange={this.handleEightChange}>
+              <select onChange={(e)=>this.handleEightChange(e, eight.question)}>
                 <option>Please Select</option>
-                {eightOptions.map((ele, key) => {
+                {eight.eightOptions.map((ele, key) => {
                   return (
                     <option key={key} value={ele.type}>
                       {ele.name}
@@ -1071,13 +1317,12 @@ class CrsCalculator extends Component {
             {showTwelve || secOffLang.length === 4 ? (
               <div className="d-flex custom-class">
                 <div>
-                  Work Experience In the last ten years, how many years of
-                  skilled work experience in Canada do you have?
+                  {twelve.question}
                 </div>
-                <select onChange={this.handleTwelveChange}>
+                <select onChange={(e)=>this.handleTwelveChange(e, twelve.question)}>
                   <option value="none">Select</option>
 
-                  {twelveOptions.map((data, key) => {
+                  {twelve.twelveOptions.map((data, key) => {
                     return <option key={key} value={key}>{data.name}</option>;
                   })}
                 </select>
@@ -1087,12 +1332,11 @@ class CrsCalculator extends Component {
             {showThirteen ? (
               <div className="d-flex custom-class">
                 <div>
-                  In the last 10 years, how many total years of foreign skilled
-                  work experience do you have?
+                  {thirteen.question}
                 </div>
-                <select onChange={(e) => this.handleThirteenChange(e)}>
+                <select onChange={(e) => this.handleThirteenChange(e, thirteen.question)}>
                   <option value="none">Select</option>
-                  {thirteenOptions.map((ele, key) => {
+                  {thirteen.thirteenOptions.map((ele, key) => {
                     return <option key={key} value={key}> {ele.name}</option>;
                   })}
                 </select>
@@ -1102,12 +1346,11 @@ class CrsCalculator extends Component {
             {showFourteen ? (
               <div className="d-flex custom-class">
                 <div>
-                  Do you have a certificate of qualification from a Canadian
-                  province, territory or federal body?
+                 {fourteen.question}
                 </div>
-                <select onChange={this.handleFourteenChange}>
+                <select onChange={(e)=>this.handleFourteenChange(e, fourteen.question)}>
                   <option value="none">Select</option>
-                  {fourteenOptions.map((ele, key) => {
+                  {fourteen.fourteenOptions.map((ele, key) => {
                     return <option key={key} value={key}> {ele.name}</option>;
                   })}
                 </select>
@@ -1116,27 +1359,38 @@ class CrsCalculator extends Component {
             {showFifteen ? (
               <div className="d-flex custom-class">
                 <div>
-                  Do you have a valid job offer supported by a Labour Market
-                  Impact Assessment (if needed)?
+                {fifteen.question}
                 </div>
-                <select onChange={this.handleFifteenChange}>
-                  <option value={0}>Select</option>
-                  {fifteenOptions.map((ele, key) => {
-                    return <option key={key}>{ele.name}</option>;
+                <select onChange={(e)=>this.handleFifteenChange(e, fifteen.question)}>
+                  <option value="none">Select</option>
+                  {fifteen.fifteenOptions.map((ele, key) => {
+                    return <option key={key} value={key}>{ele.name}</option>;
                   })}
                 </select>
               </div>
             ) : null}
+
+            {showFifteenA ?
+             ( <div> 
+              <div>{fifteenA.question}</div>
+             <select onChange={(e)=>this.handleFifteenAChange(e, fifteenA.question)}>
+                  <option value="none">Select</option>
+                  {fifteenA.fifteenAOptions.map((ele, key)=>{
+                    return <option key={key} value={key}>{ele.name}</option>;
+                  })}
+             </select>
+              </div>
+              ) : null  }
+
             {showSixteen ? (
               <div className="d-flex custom-class">
                 <div>
-                  Do you have a nomination certificate from a province or
-                  territory?
+                 {sixteen.question}
                 </div>
-                <select onChange={this.handleSixteenChange}>
-                  <option value={0}>Select</option>
-                  {sixteenOptions.map((ele, key) => {
-                    return <option key={key}>{ele.name}</option>;
+                <select onChange={(e)=>this.handleSixteenChange(e, sixteen.question)}>
+                  <option value="none">Select</option>
+                  {sixteen.sixteenOptions.map((ele, key) => {
+                    return <option key={key} value={key}>{ele.name}</option>;
                   })}
                 </select>
               </div>
@@ -1145,20 +1399,22 @@ class CrsCalculator extends Component {
             {showSeventeen ? (
               <div className="d-flex custom-class">
                 <div>
-                  Do you or your spouse or common law partner (if they will come
-                  with you to Canada) have at least one brother or sister living
-                  in Canada who is a citizen or permanent resident?
+                 {seventeen.question}
                 </div>
-                <select onChange={this.handleSeventeenChnage}>
-                  <option value={0}>Select</option>
-                  {seventeenOptions.map((ele, key) => {
-                    return <option key={key}>{ele.name}</option>;
+                <select onChange={(e)=>this.handleSeventeenChnage(e, seventeen.question)}>
+                  <option value="none">Select</option>
+                  {seventeen.seventeenOptions.map((ele, key) => {
+                    return <option key={key} value={key}>{ele.name}</option>;
                   })}
                 </select>
               </div>
             ) : null}
-          </div>
+             
+              </div>
         ) : null}
+      {showEighteen ?  <button className="btn btn-primary" disabled={showEighteen ? false: true}  onClick={this.calculateScore}>Calculate Score</button>
+      : null}
+      {finalScore && <h3>{finalScore}</h3>}
       </div>
     );
   }
