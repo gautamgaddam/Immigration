@@ -7,9 +7,8 @@ const {  Content } = Layout;
 function App() {
   return (
     <div className="App">
-      <h1 >
-       crs Calculator
-      </h1>
+      <h3 >
+  CRS CALCULATOR      </h3>
 
       <Content>
        {/*   <Bcpnpcalculator />*/}       

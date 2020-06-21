@@ -22,6 +22,7 @@ class CrsCalculator extends Component {
       showEighteen: false,
       firstOffLang: [],
       secOffLang: [],
+      isCommonLaw: null,
 
       first:{
         question: "What is your marital status?",
@@ -81,7 +82,7 @@ class CrsCalculator extends Component {
           {
             name: "Secondary diploma (high school graduation",
             withSpouse: 28,
-            withoutSpoue: 30,
+            withoutSpouse: 30,
           },
           {
             name:
@@ -123,8 +124,8 @@ class CrsCalculator extends Component {
       five:{
         question:" Have you earned a Canadian degree, diploma or certificate?",
         fiveOptions: [
-          { name: "Yes", type: 1 },
-          { name: "No", type: 0 },
+          { name: "Yes", type: 1 , value: 0},
+          { name: "No", type: 0 , value:0},
         ]
       },
       six:{
@@ -165,56 +166,56 @@ class CrsCalculator extends Component {
             {
               type: "speaking",
               values: [
-                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
-                { val: "9", withspouse: 29, withoutSpouse: 31 },
-                { val: "8", withspouse: 22, withoutSpouse: 23 },
-                { val: "7", withspouse: 16, withoutSpouse: 17 },
-                { val: "6", withspouse: 8, withoutSpouse: 9 },
-                { val: "5", withspouse: 6, withoutSpouse: 6 },
-                { val: "4", withspouse: 6, withoutSpouse: 6 },
-                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
+                { val: "10-12", withSpouse: 32, withoutSpouse: 34 },
+                { val: "9", withSpouse: 29, withoutSpouse: 31 },
+                { val: "8", withSpouse: 22, withoutSpouse: 23 },
+                { val: "7", withSpouse: 16, withoutSpouse: 17 },
+                { val: "6", withSpouse: 8, withoutSpouse: 9 },
+                { val: "5", withSpouse: 6, withoutSpouse: 6 },
+                { val: "4", withSpouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withSpouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Listening",
               values: [
-                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
-                { val: "9", withspouse: 29, withoutSpouse: 31 },
-                { val: "8", withspouse: 22, withoutSpouse: 23 },
-                { val: "7", withspouse: 16, withoutSpouse: 17 },
-                { val: "6", withspouse: 8, withoutSpouse: 9 },
+                { val: "10-12", withSpouse: 32, withoutSpouse: 34 },
+                { val: "9", withSpouse: 29, withoutSpouse: 31 },
+                { val: "8", withSpouse: 22, withoutSpouse: 23 },
+                { val: "7", withSpouse: 16, withoutSpouse: 17 },
+                { val: "6", withSpouse: 8, withoutSpouse: 9 },
 
-                { val: "5", withspouse: 6, withoutSpouse: 6 },
+                { val: "5", withSpouse: 6, withoutSpouse: 6 },
 
-                { val: "4", withspouse: 6, withoutSpouse: 6 },
+                { val: "4", withSpouse: 6, withoutSpouse: 6 },
 
-                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
+                { val: "M, 0-3", withSpouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Reading",
               values: [
-                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
-                { val: "9", withspouse: 29, withoutSpouse: 31 },
-                { val: "8", withspouse: 22, withoutSpouse: 23 },
-                { val: "7", withspouse: 16, withoutSpouse: 17 },
-                { val: "6", withspouse: 8, withoutSpouse: 9 },
-                { val: "5", withspouse: 6, withoutSpouse: 6 },
-                { val: "4", withspouse: 6, withoutSpouse: 6 },
-                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
+                { val: "10-12", withSpouse: 32, withoutSpouse: 34 },
+                { val: "9", withSpouse: 29, withoutSpouse: 31 },
+                { val: "8", withSpouse: 22, withoutSpouse: 23 },
+                { val: "7", withSpouse: 16, withoutSpouse: 17 },
+                { val: "6", withSpouse: 8, withoutSpouse: 9 },
+                { val: "5", withSpouse: 6, withoutSpouse: 6 },
+                { val: "4", withSpouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withSpouse: 0, withoutSpouse: 0 },
               ],
             },
             {
               type: "Writing",
               values: [
-                { val: "10-12", withspouse: 32, withoutSpouse: 34 },
-                { val: "9", withspouse: 29, withoutSpouse: 31 },
-                { val: "8", withspouse: 22, withoutSpouse: 23 },
-                { val: "7", withspouse: 16, withoutSpouse: 17 },
-                { val: "6", withspouse: 8, withoutSpouse: 9 },
-                { val: "5", withspouse: 6, withoutSpouse: 6 },
-                { val: "4", withspouse: 6, withoutSpouse: 6 },
-                { val: "M, 0-3", withspouse: 0, withoutSpouse: 0 },
+                { val: "10-12", withSpouse: 32, withoutSpouse: 34 },
+                { val: "9", withSpouse: 29, withoutSpouse: 31 },
+                { val: "8", withSpouse: 22, withoutSpouse: 23 },
+                { val: "7", withSpouse: 16, withoutSpouse: 17 },
+                { val: "6", withSpouse: 8, withoutSpouse: 9 },
+                { val: "5", withSpouse: 6, withoutSpouse: 6 },
+                { val: "4", withSpouse: 6, withoutSpouse: 6 },
+                { val: "M, 0-3", withSpouse: 0, withoutSpouse: 0 },
               ],
             },
           ],
@@ -426,7 +427,7 @@ class CrsCalculator extends Component {
       fourteen:{
         question:"Do you have a certificate of qualification from a Canadian province, territory or federal body?",
         fourteenOptions: [
-          { name: "Yes", type: 1 , plusFive: 25, plusSeven:30},
+          { name: "Yes", type: 1 , plusFive: 50, plusSeven:50},
           { name: "No", type: 0, plusFive: 0, plusSeven:0 },
         ]},
         fifteen:{
@@ -462,15 +463,17 @@ class CrsCalculator extends Component {
   }
 
   handleChange = (e) => {
-    let value = e.target.value;
+    let value = e.target.value.split("-")[0];
+    let data  = e.target.value.split("-")[1];
     if (value === "0") {
-      this.setState({ showQues2: true, typeWithSpowithoutSpou: value });
+      this.setState({ showQues2: true, typeWithSpowithoutSpou: value, isCommonLaw: data });
     } else if (value === "1") {
       this.setState({
         showQues2: false,
         showSperm: false,
         showThree: true,
         typeWithSpowithoutSpou: value,
+        isCommonLaw: data
       });
     } else {
       this.setState({ showQues2: false, showSperm: false, showThree: false });
@@ -523,7 +526,7 @@ class CrsCalculator extends Component {
         answer: value,
         key:"four",
         innerKey:"fourOptions",
-        withwithout: true,
+        withWithout: true,
       };
       if (totalScore.length > 0) {
         let isFound = totalScore.filter((ele) => ele.question !== obj.question);
@@ -539,13 +542,45 @@ class CrsCalculator extends Component {
       }
     }
   };
-  handleFiveChange = (e) => {
+  handleFiveChange = (e, q) => {
+    // let value = e.target.value;
+    // if (value === "1") {
+    //   this.setState({ showSix: true, showSeven: false });
+    // } else {
+    //   this.setState({ showSeven: true, showSix: false });
+    // }
+
     let value = e.target.value;
-    if (value === "1") {
-      this.setState({ showSix: true, showSeven: false });
-    } else {
+    let { totalScore } = this.state;
+    if (value === "none") {
+      this.setState({ showSix: false});
+    } else if(value==="0"){
+      let obj = {
+        question: q,
+        answer: value,
+        key:"five",
+        innerKey:"fiveOptions",
+        withWithout: false,
+      };
+      if (totalScore.length > 0) {
+        let isFound = totalScore.filter((ele) => ele.question !== obj.question);
+        this.setState({
+          totalScore: [...isFound, obj],
+          showSix: true,
+          showSeven: false
+        });
+      } else {
+        this.setState({
+          totalScore: [...totalScore, obj],
+          showSix: true,
+          showSeven: false
+        });
+      }
+    }else{
       this.setState({ showSeven: true, showSix: false });
     }
+
+
   };
   handleSixChange = (e, q) => {
     let value = e.target.value;
@@ -948,7 +983,7 @@ class CrsCalculator extends Component {
     // console.log(this.state.totalScore);
     // console.log(this.state.typeWithSpowithoutSpou);
     
-    let {totalScore, typeWithSpowithoutSpou}= this.state;
+    let {totalScore, typeWithSpowithoutSpou, isCommonLaw}= this.state;
    
     //  )
      let scoreSpouse=[];
@@ -981,19 +1016,19 @@ class CrsCalculator extends Component {
       totalScore.map(score=> 
       {
         if(score.withwithout && score.getInner === undefined){
-            let answer=  typeWithSpowithoutSpou ==="1"?
+            let answer=  typeWithSpowithoutSpou ==="1" || isCommonLaw === "Common-Law" ?
                  this.state[score.key][score.innerKey][parseInt(score.answer)].withoutSpouse :
                 this.state[score.key][score.innerKey][parseInt(score.answer)].withSpouse;
                scoreSpouse.push({...score, newAnswer: answer})
                return score
         }else if(score.type==="firstOffLang"){
-          let answer=  typeWithSpowithoutSpou ==="1"?
+          let answer=  typeWithSpowithoutSpou ==="1" || isCommonLaw === "Common-Law"?
           this.state.eight.eightOptions[0].options[0].values[parseInt(score.answer)].withoutSpouse :
           this.state.eight.eightOptions[0].options[0].values[parseInt(score.answer)].withSpouse;
           firstOff.push({...score, newAnswer: answer})
         return score
         }else if(score.type==="secOffLang"){
-          let answer=  typeWithSpowithoutSpou ==="1"?
+          let answer=  typeWithSpowithoutSpou ==="1" || isCommonLaw === "Common-Law"?
           this.state.eight.eightOptions[1].options[0].values[parseInt(score.answer)].withoutSpouse :
           this.state.eight.eightOptions[1].options[0].values[parseInt(score.answer)].withSpouse;
           secondOff.push({...score, newAnswer: answer})
@@ -1004,7 +1039,7 @@ class CrsCalculator extends Component {
           
          let answer=checkAnswerten ?  this.state.thirteen.thirteenOptions[parseInt(score.answer)].twoYear 
             :  (checkAnswerSeven ? this.state.thirteen.thirteenOptions[parseInt(score.answer)].oneYear: 0 )
-          return additional.push({...score, newAnswer: answer})
+          return additional.push({...score, newAnswer: answer*2 > 50 ? 50 : answer*2})
         }else if(score.key==="fourteen"){
           let checkAnswerten= checkFourteen.map(ele=> ele.value=== 10).every(v => v === true);
          let checkAnswerSeven= checkFourteen.map(ele=> ele.value=== 7).every(v => v === true);
@@ -1024,6 +1059,10 @@ class CrsCalculator extends Component {
           let answer=   this.state[score.key][score.innerKey][parseInt(score.answer)].value ;
           additional.push({...score, newAnswer: answer})
            return score
+        }else if(score.key ==="five"){
+          let answer=   this.state[score.key][score.innerKey][parseInt(score.answer)].value ;
+          additional.push({...score, newAnswer: answer})
+          return score
         }
         else{
           return score;
@@ -1087,7 +1126,7 @@ class CrsCalculator extends Component {
             <option default>Select Status</option>
             {first.martialStatus.map((ele, key) => {
               return (
-                <option key={key} value={ele.type}>
+                <option key={key} value={ele.type+"-"+ele.name} >
                   {ele.name}
                 </option>
               );
@@ -1178,11 +1217,11 @@ class CrsCalculator extends Component {
               {five.question}
              
             </div>
-            <select onChange={this.handleFiveChange}>
+            <select onChange={(e)=>this.handleFiveChange(e, five.question)}>
               <option>Please Select</option>
               {five.fiveOptions.map((ele, key) => {
                 return (
-                  <option key={key} value={ele.type}>
+                  <option key={key} value={key}>
                     {ele.name}
                   </option>
                 );
@@ -1412,9 +1451,12 @@ class CrsCalculator extends Component {
              
               </div>
         ) : null}
-      {showEighteen ?  <button className="btn btn-primary" disabled={showEighteen ? false: true}  onClick={this.calculateScore}>Calculate Score</button>
+
+        <div className="d-flex justify-content-center">
+      {showEighteen ?  <button className="btn btn-primary mr-3" disabled={showEighteen ? false: true}  onClick={this.calculateScore}>Calculate Score</button>
       : null}
-      {finalScore && <h3>{finalScore}</h3>}
+      {finalScore && <h3>Total Score: {finalScore}</h3>}
+      </div>
       </div>
     );
   }
